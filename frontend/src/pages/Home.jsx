@@ -64,15 +64,13 @@ export default function Home() {
     }
   }, [journals, searchIn]);
 
-  const handleSearch = () => {
-    const params = new URLSearchParams();
+  const handleSearch = (e) => {
+    e.preventDefault();
 
-    const q = searchQuery.trim() || keyword.trim();
+    const query = encodeURIComponent(keyword.trim());
+    const journal = encodeURIComponent(searchIn);
 
-    if (q) params.set("q", q);
-    if (selectedJournal) params.set("journal", selectedJournal);
-
-    navigate(`/search?${params.toString()}`);
+    navigate(`/search?q=${query}&journal=${journal}`);
   };
 
   const stats = [

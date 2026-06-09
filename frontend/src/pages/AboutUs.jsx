@@ -386,38 +386,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-6 bg-white px-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-[#faf6ef] to-[#f5efe6] border rounded-xl px-8 py-6 shadow"
-          >
-            <div className="flex items-center gap-4">
-              <div className="text-[#B8860B]">
-                <Users size={40} strokeWidth={1.5} />
-              </div>
-
-              <div>
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900">
-                  Be a part of our growing community
-                </h3>
-                <p className="text-gray-500 text-sm">
-                  Join MRI India and contribute to mathematics.
-                </p>
-              </div>
-            </div>
-
-            <Link
-              to="/membership"
-              className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9c7410] text-white text-xs font-semibold px-6 py-3 rounded-md transition"
-            >
-              BECOME A MEMBER
-              <ArrowRight size={16} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+     
     </div>
   );
 }

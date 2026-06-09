@@ -143,13 +143,20 @@ useEffect(() => {
   title="Email Us"
   text="For general queries and support"
   highlight={contactInfo?.email || "editor@mriindia.com"}
+  onClick={() =>
+    window.open(
+      `mailto:${contactInfo?.email || "editor@mriindia.com"}`
+    )
+  }
 />
 
 <ContactItem
   icon={<Phone size={22} />}
   title="Call Us"
-  text={contactInfo?.workingHours || "Mon - Sat (9:00 AM - 6:00 PM IST)"}
   highlight={contactInfo?.phone || "+91 9960266198"}
+  onClick={() =>
+    window.open(`tel:${contactInfo?.phone || "+919960266198"}`)
+  }
 />
 
 <ContactItem
@@ -160,6 +167,15 @@ useEffect(() => {
     "Multidisciplinary Research Institute (MRI) 1, Institutional Area, Taramani, Chennai - 600113, Tamil Nadu, India"
   }
   highlight="View on Map"
+  onClick={() =>
+    window.open(
+      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        contactInfo?.address ||
+          "Multidisciplinary Research Institute Nagpur, Maharashtra, India"
+      )}`,
+      "_blank"
+    )
+  }
 />
 
 <ContactItem
@@ -167,8 +183,9 @@ useEffect(() => {
   title="Working Hours"
   text={
     contactInfo?.workingHours ||
-    "Monday - Saturday 9:00 AM - 6:00 PM (IST) Sunday & Public Holidays - Closed"
+    "Monday - Saturday : 9:00 AM - 6:00 PM (IST) Sunday & Public Holidays - Closed"
   }
+  
 />
           </motion.aside>
 
@@ -399,15 +416,23 @@ function Field({ label, required, children }) {
   );
 }
 
-function ContactItem({ icon, title, text, highlight }) {
+function ContactItem({ icon, title, text, highlight, onClick }) {
   return (
-    <div className="flex gap-3 py-4 border-b border-[#eee2d4] last:border-b-0 group">
+    <div
+      onClick={onClick}
+      className="flex gap-3 py-4 border-b border-[#eee2d4] last:border-b-0 group cursor-pointer"
+    >
       <div className="w-[42px] h-[42px] rounded-full bg-[#fbf1df] text-[#b87518] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
         {icon}
       </div>
+
       <div>
         <h3 className="text-[13px] font-bold text-[#111]">{title}</h3>
-        <p className="text-[11px] text-[#555] leading-[1.5] mt-1">{text}</p>
+
+        <p className="text-[11px] text-[#555] leading-[1.5] mt-1">
+          {text}
+        </p>
+
         {highlight && (
           <p className="text-[11px] font-semibold text-[#b87518] mt-1">
             {highlight}
