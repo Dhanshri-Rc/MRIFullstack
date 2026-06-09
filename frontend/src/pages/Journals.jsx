@@ -654,59 +654,55 @@ function JournalGridCard({ journal, i }) {
       viewport={{ once: true }}
       custom={i}
       variants={fadeUp}
-      className="group bg-white border border-[#eadfd3] rounded-[7px] p-4 hover:-translate-y-1 hover:border-[#d69a22]/60 hover:shadow-[0_16px_40px_rgba(184,117,24,0.12)] transition-all duration-300"
+      className="group bg-white border border-[#eadfd3] rounded-[7px] p-4 
+                 flex flex-col h-full
+                 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(184,117,24,0.12)] transition-all"
     >
-      <div className="w-full h-[170px] rounded-[5px] bg-[#fff8ec] flex items-center justify-center overflow-hidden">
+      {/* IMAGE */}
+      <div className="w-full h-[140px] rounded-[5px] bg-[#fff8ec] flex items-center justify-center overflow-hidden">
         {coverSrc ? (
-          <img
-            src={coverSrc}
-            alt={journal.title}
-            className="w-full h-full object-cover"
-          />
+          <img src={coverSrc} className="w-full h-full object-cover" />
         ) : (
           <BookOpen size={40} className="text-[#d69a22]" />
         )}
       </div>
-      <h3 className="font-serif text-[17px] font-semibold mt-4 ">
-        {journal.title}
-      </h3>
-      <p className="text-[12px] text-[#444] leading-[1.6] mt-2 line-clamp-3">
-        {journal.description || "No description available."}
-      </p>
 
-      <div className="mt-4 space-y-2">
-        {journal.issnPrint && (
-          <Info
-            icon={<FileText size={13} />}
-            text={`ISSN: ${journal.issnPrint}`}
-          />
-        )}
-        {journal.frequency && (
-          <Info
-            icon={<CalendarDays size={13} />}
-            text={`Frequency: ${journal.frequency}`}
-          />
-        )}
-        {journal.language && (
-          <Info
-            icon={<Globe size={13} />}
-            text={`Language: ${journal.language}`}
-          />
-        )}
-        {journal.establishedYear && (
-          <Info
-            icon={<CalendarDays size={13} />}
-            text={`Established: ${journal.establishedYear}`}
-          />
-        )}
+      {/* TITLE + CONTENT */}
+      <div className="flex flex-col flex-1">
+        <h3 className="font-serif text-[16px] font-semibold mt-4 line-clamp-2">
+          {journal.title}
+        </h3>
+
+        <p className="text-[12px] text-[#444] mt-2 line-clamp-3">
+          {journal.description || "No description available."}
+        </p>
+
+        {/* INFO SECTION */}
+        <div className="mt-3 space-y-2 text-[12px] text-[#333]">
+          {journal.issnPrint && (
+            <Info icon={<FileText size={13} />} text={`ISSN: ${journal.issnPrint}`} />
+          )}
+          {journal.frequency && (
+            <Info icon={<CalendarDays size={13} />} text={`Frequency: ${journal.frequency}`} />
+          )}
+          {journal.language && (
+            <Info icon={<Globe size={13} />} text={`Language: ${journal.language}`} />
+          )}
+          {journal.establishedYear && (
+            <Info icon={<CalendarDays size={13} />} text={`Established: ${journal.establishedYear}`} />
+          )}
+        </div>
+
+        {/* ✅ FIXED BUTTON (ALWAYS BOTTOM) */}
+        <Link
+          to={`/search?journalId=${journal.id}`}
+          className=" mt-8 w-full h-[32px] flex items-center justify-center 
+                     border border-[#b87518] text-[#b87518] text-[12px] font-semibold 
+                     rounded-[6px] hover:bg-[#b87518] hover:text-white transition-all"
+        >
+          View Articles
+        </Link>
       </div>
-
-      <Link
-        to={`/search?journal=${journal.id}`}
-        className="block w-full h-[34px] mt-4 rounded-[5px] border border-[#b87518] text-[#b87518] text-[11px] font-semibold hover:bg-[#b87518] hover:text-white transition-all flex items-center justify-center"
-      >
-        View Articles
-      </Link>
     </motion.article>
   );
 }
