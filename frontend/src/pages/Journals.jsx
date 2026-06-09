@@ -452,7 +452,7 @@ function FilterPanel({
         "UGC CARE Listed",
         "Scopus Indexed",
       ].map((label) => {
-        const count = publicationTypeCounts?.[label] || 0;
+        
 
         return (
           <label
