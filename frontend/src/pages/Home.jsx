@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Search,
@@ -8,6 +8,7 @@ import {
   CalendarDays,
   Lightbulb,
   Users,
+  ChevronDown,
   Library,
   ChevronRight,
 } from "lucide-react";
@@ -17,56 +18,99 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
+
+  const [searchIn, setSearchIn] = useState("");
   const [journals, setJournals] = useState([]);
   const [selectedJournal, setSelectedJournal] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [dbStats, setDbStats] = useState(null);
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    getJournals({ limit: 200 }).then((d) => setJournals(d.data || [])).catch(() => {});
-    getDashboardStats().then((d) => setDbStats(d.data)).catch(() => {});
+    getJournals({ limit: 200 })
+      .then((d) => setJournals(d.data || []))
+      .catch(() => setJournals([]));
+
+    getDashboardStats()
+      .then((d) => setDbStats(d.data))
+      .catch(() => {});
   }, []);
 
-const handleSearch = () => {
-  const params = new URLSearchParams();
+ 
+  const filteredJournals = useMemo(() => {
+    const q = keyword.trim().toLowerCase();
 
-  const q = searchQuery.trim();
+    if (!q) return journals;
 
-  if (q) params.set("q", q);
-  if (selectedJournal) params.set("journal", selectedJournal);
+    return journals.filter((journal) => {
+      return (
+        (journal.title || "").toLowerCase().includes(q) ||
+        (journal.keywords || "").toLowerCase().includes(q) ||
+        (journal.subjectArea || "").toLowerCase().includes(q) ||
+        (journal.description || "").toLowerCase().includes(q)
+      );
+    });
+  }, [keyword, journals]);
 
-  navigate(`/search?${params.toString()}`);
-};
+  
+
+ 
+  useEffect(() => {
+    if (
+      searchIn &&
+      !journals.some((j) => String(j.id) === String(searchIn))
+    ) {
+      setSearchIn("");
+    }
+  }, [journals, searchIn]);
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+
+    const q = searchQuery.trim() || keyword.trim();
+
+    if (q) params.set("q", q);
+    if (selectedJournal) params.set("journal", selectedJournal);
+
+    navigate(`/search?${params.toString()}`);
+  };
 
   const stats = [
-    { icon: <BookOpen />, value: dbStats ? dbStats.totalJournals.toLocaleString() : "150+", title: "Journals", desc: "Curated MRI Journals" },
-    { icon: <FileText />, value: dbStats ? dbStats.totalArticles.toLocaleString() : "25,000+", title: "Articles", desc: "Research Articles" },
-    { icon: <CalendarDays />, value: "10+ Years", title: "Coverage", desc: "Research Coverage" },
-    { icon: <Users />, value: dbStats ? dbStats.totalInstitutions.toLocaleString() : "500+", title: "Institutions", desc: "Across India" },
+    {
+      icon: <BookOpen />,
+      value: dbStats ? dbStats.totalJournals.toLocaleString() : "150+",
+      title: "Journals",
+      desc: "Curated MRI Journals",
+    },
+    {
+      icon: <FileText />,
+      value: dbStats ? dbStats.totalArticles.toLocaleString() : "25,000+",
+      title: "Articles",
+      desc: "Research Articles",
+    },
+    {
+      icon: <CalendarDays />,
+      value: "10+ Years",
+      title: "Coverage",
+      desc: "Research Coverage",
+    },
+    {
+      icon: <Users />,
+      value: dbStats ? dbStats.totalInstitutions.toLocaleString() : "500+",
+      title: "Institutions",
+      desc: "Across India",
+    },
   ];
-
-  const steps = [
-    [<Search />, "1", "Search", "Enter keywords, titles or topics"],
-    [<Filter />, "2", "Filter", "Refine results using journals and filters"],
-    [<FileText />, "3", "Explore", "Discover relevant articles and research"],
-  ];
-const quickLinks = [
-  {
-    icon: <Library size={20} />,
-    label: "Browse All Journals",
-    link: "/journals",
-  },
-  {
-    icon: <Filter size={20} />,
-    label: "Advanced Search",
-    link: "/advanced-search",
-  },
-  {
-    icon: <Lightbulb size={20} />,
-    label: "Search Tips",
-    link: "/search",
-  },
+const steps = [
+  [<Search />, "1", "Search", "Enter keywords, titles or topics"],
+  [<Filter />, "2", "Filter", "Refine results using journals and filters"],
+  [<FileText />, "3", "Explore", "Discover relevant articles and research"],
 ];
+  const quickLinks = [
+    { icon: <Library size={20} />, label: "Browse All Journals", link: "/journals" },
+    { icon: <Filter size={20} />, label: "Advanced Search", link: "/advanced-search" },
+    { icon: <Lightbulb size={20} />, label: "Search Tips", link: "/search" },
+  ];
   return (
     <div className="min-h-screen bg-[#fbfaf7] text-[#101827] overflow-x-hidden">
 
@@ -110,56 +154,78 @@ const quickLinks = [
 </button>
           </div>
 
-          <div className="grid lg:grid-cols-[1.6fr_1fr_160px] gap-5 lg:gap-7 mt-6 items-end">
+           
+
+   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-7 mt-5">
             <div>
-              <label className="text-[13px] font-medium">
-                Search by Keyword or Title
-              </label>
-              <div className="mt-3 flex items-center gap-3 border border-[#d8d8d8] rounded-lg px-4 h-[48px] transition-all duration-300 focus-within:border-[#b98012] focus-within:shadow-[0_0_0_3px_rgba(185,128,18,0.12)] hover:border-[#b98012]">
-                <Search size={19} />
-               <input
-  value={searchQuery}
-  onChange={(e) => setSearchQuery(e.target.value)}
-  onKeyDown={(e) => {
-    if (e.key === "Enter") handleSearch();
-  }}
-  className="w-full outline-none text-[13px] sm:text-[14px] text-gray-600"
-  placeholder="Search for keywords, article titles, topics, authors..."
-/>
+            
+
+              <div className="relative group">
+                <Search
+                  size={20}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c27a12]"
+                />
+                <input
+                  value={keyword}
+                  onChange={(e) => setKeyword(e.target.value)}
+                  placeholder="Enter title, keywords or topics..."
+                  className="w-full h-[46px] sm:h-[50px] rounded-[7px] border border-[#d8d8d8] bg-white pl-12 pr-4 text-[13px] outline-none focus:border-[#c27a12] focus:shadow-[0_0_0_3px_rgba(194,122,18,0.10)] transition-all"
+                />
               </div>
             </div>
 
             <div>
-              <label className="text-[13px] font-medium">
-                Select Journal
-              </label>
-              <div className="mt-3 flex items-center gap-3 border border-[#d8d8d8] rounded-lg px-4 h-[48px] transition-all duration-300 hover:border-[#b98012]">
-                <BookOpen size={19} />
+            
+
+              <div className="relative group">
+                <BookOpen
+                  size={20}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c27a12]"
+                />
+
                 <select
-                  value={selectedJournal}
-                  onChange={(e) => setSelectedJournal(e.target.value)}
-                  className="w-full outline-none bg-white text-[14px]"
+                  value={searchIn}
+                  onChange={(e) => setSearchIn(e.target.value)}
+                  className="appearance-none w-full h-[46px] sm:h-[50px] rounded-[7px] border border-[#d8d8d8] bg-white pl-12 pr-10 text-[13px] outline-none focus:border-[#c27a12] focus:shadow-[0_0_0_3px_rgba(194,122,18,0.10)] transition-all"
                 >
                   <option value="">All Journals</option>
-                  {journals.map((j) => (
-                    <option key={j.id} value={j.id}>{j.title}</option>
-                  ))}
+
+                  {filteredJournals.length > 0 ? (
+                    filteredJournals.map((journal) => (
+                      <option key={journal.id} value={journal.id}>
+                        {journal.title}
+                      </option>
+                    ))
+                  ) : (
+                    <option disabled>No journal found</option>
+                  )}
                 </select>
+
+                <ChevronDown
+                  size={17}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"
+                />
               </div>
             </div>
+          
 
+  </div>
+  <div className="flex justify-center mt-4 gap-6">
             <button
               onClick={handleSearch}
-              className="h-[48px] rounded-lg bg-gradient-to-r from-[#9a6108] to-[#d59621] text-white font-semibold flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.04] hover:shadow-lg active:scale-[0.98]">
-              <Search size={19} /> Search
+              className=" bg-gradient-to-r from-[#9a6108] to-[#d59621] border border-[#ddb66d] text-white rounded-lg px-10 py-2 flex items-center gap-2 transition-all duration-300 hover:bg-[#fff4df] hover:scale-[1.03]">
+              <Search size={16} /> Search
             </button>
-          </div>
+      
 
-          {/* <div className="flex justify-center mt-4">
+<Link to="/journals">
+        
             <button className="border border-[#ddb66d] text-[#b98012] rounded-lg px-6 py-2 flex items-center gap-3 transition-all duration-300 hover:bg-[#fff4df] hover:scale-[1.03]">
               <Filter size={19} /> Advanced Filters
             </button>
-          </div> */}
+         
+          </Link>
+           </div>
         </div>
       </section>
 

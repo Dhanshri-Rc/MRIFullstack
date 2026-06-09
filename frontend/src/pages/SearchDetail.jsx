@@ -1088,12 +1088,12 @@ export default function SearchDetail() {
           Apply
         </button>
       </div>
-<button
+{/* <button
         onClick={handleClearFilters}
         className="w-full py-2 rounded-lg border border-gray-200 text-[12px] text-gray-500 hover:bg-gray-50 flex items-center justify-center gap-1"
       >
         <X size={12} /> Clear All Filters
-      </button>
+      </button> */}
     </div>
   );
 
@@ -1377,7 +1377,7 @@ function ArticleCard({ article, onCopyCitation, copiedCitation,  viewMode }) {
     return (
       <div className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow flex flex-col gap-3">
         <div>
-          <h3 className="text-[14px] font-bold text-[#0f1b2d] leading-snug hover:text-[#d69a22] cursor-pointer mb-1 transition-colors line-clamp-3">
+          <h3 className="text-[14px] font-bold text-[#0f1b2d] leading-snug  cursor-pointer mb-1 transition-colors line-clamp-3">
             {article.title}
           </h3>
           <p className="text-[11px] text-gray-500">
@@ -1413,7 +1413,7 @@ function ArticleCard({ article, onCopyCitation, copiedCitation,  viewMode }) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow grid grid-cols-[1fr_180px] gap-4 items-start">
       <div className="flex-1 min-w-0">
-        <h3 className="text-[16px] font-bold text-[#0f1b2d] leading-snug hover:text-[#d69a22] cursor-pointer mb-1 transition-colors">
+        <h3 className="text-[16px] font-bold text-[#0f1b2d] leading-snug  cursor-pointer mb-1 transition-colors">
           {article.title}
         </h3>
 

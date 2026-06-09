@@ -8,9 +8,16 @@ import {
   Plus,
   Send,
   Handshake,
+ 
 } from "lucide-react";
 import bg6 from "../assets/hbg2.png";
 import { submitContact, getContactInfo } from "../api/api";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
+
+
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 22 },
@@ -31,6 +38,7 @@ const faqs = [
 
 export default function ContactUs() {
   const [openFaq, setOpenFaq] = useState(null);
+  const location = useLocation();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -54,6 +62,16 @@ export default function ContactUs() {
 
   fetchContactInfo();
 }, []);
+
+
+
+useEffect(() => {
+  if (location.hash === "#contact-hero") {
+    document
+      .getElementById("contact-hero")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }
+}, [location]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -82,7 +100,10 @@ export default function ContactUs() {
   return (
     <main className="bg-[#fbfaf8] min-h-screen">
       {/* Banner */}
-      <section className="relative h-[130px] sm:h-[160px] overflow-hidden bg-[#1b1208]">
+      <section
+  id="contact-hero"
+  className="relative h-[130px] sm:h-[160px] overflow-hidden bg-[#1b1208]"
+>
         <img
           src={bg6}
           alt=""
@@ -319,10 +340,21 @@ export default function ContactUs() {
           <h3 className="font-bold text-[15px]">
             Looking for collaboration or partnerships?
           </h3>
+          <Link
+  to="/contact#contact-hero"
+  onClick={() => {
+    setTimeout(() => {
+      document
+        .getElementById("contact-hero")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }}
+>
           <button className="h-[34px] px-5 rounded-[5px] border border-[#d69a22] text-[#b87518] text-[12px] font-semibold flex items-center gap-2 hover:bg-[#b87518] hover:text-white transition-all">
             <Handshake size={15} />
             Write to Us
           </button>
+          </Link>
         </div>
       </section>
 

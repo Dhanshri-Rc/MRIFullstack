@@ -5,7 +5,6 @@ import {
   ChevronDown,
   Grid3X3,
   List,
-  Bookmark,
   CalendarDays,
   Globe,
   FileText,
@@ -162,11 +161,10 @@ export default function Journals() {
               Journals
             </span>
           </div>
-
-          <p className="text-white/90 text-[13px] sm:text-[14px] leading-[1.7] max-w-[400px] mt-1">
+        <p className="text-white/90 text-[13px] sm:text-[14px] leading-[1.7] max-w-[400px] mt-1">
             Explore and search through our comprehensive collection of MRI
             journals from across India.
-          </p>
+        </p>
         </div>
       </section>
 
@@ -180,7 +178,7 @@ export default function Journals() {
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-[230px_1fr] gap-5">
-          <aside className="hidden lg:block">
+          <aside className="hidden lg:block sticky top-4 h-fit">
             <FilterPanel
               subject={subject}
               setSubject={setFilterAndResetPage(setSubject)}
@@ -473,7 +471,7 @@ function FilterPanel({
               {label}
             </span>
 
-            <span className="text-[#777]">({count})</span>
+            
           </label>
         );
       })}
@@ -491,7 +489,7 @@ function FilterPanel({
       <Select value={language} onChange={setLanguage}>
         <option>All Languages</option>
         <option>English</option>
-        <option>Hindi</option>
+      
       </Select>
 
       <h3 className="text-[12px] font-semibold mt-5 mb-3">
@@ -499,12 +497,11 @@ function FilterPanel({
       </h3>
       <Select value={year} onChange={setYear}>
         <option>All Years</option>
-        <option>2010</option>
-        <option>2014</option>
-        <option>2015</option>
-        <option>2018</option>
+        <option>2023</option>
         <option>2024</option>
-      </Select>
+        <option>2025</option>
+        <option>2026</option>
+        </Select>
 
       <button
         type="button"
@@ -575,7 +572,7 @@ function JournalListCard({ journal, i }) {
         </div>
 
         <div>
-          <h3 className="font-serif text-[18px] font-semibold text-[#111] group-hover:text-[#b87518] transition-colors">
+          <h3 className="font-serif text-[18px] font-semibold text-[#111]  transition-colors">
             {journal.title}
           </h3>
           <p className="text-[12px] text-[#333] leading-[1.7] mt-2 max-w-[520px] line-clamp-3">
@@ -637,7 +634,7 @@ function JournalListCard({ journal, i }) {
             >
               View Articles <ArrowRight size={13} />
             </Link>
-            <Bookmark size={17} className="text-[#b87518]" />
+            {/* <Bookmark size={17} className="text-[#b87518]" /> */}
           </div>
         </div>
       </div>
@@ -670,7 +667,7 @@ function JournalGridCard({ journal, i }) {
           <BookOpen size={40} className="text-[#d69a22]" />
         )}
       </div>
-      <h3 className="font-serif text-[17px] font-semibold mt-4 group-hover:text-[#b87518]">
+      <h3 className="font-serif text-[17px] font-semibold mt-4 ">
         {journal.title}
       </h3>
       <p className="text-[12px] text-[#444] leading-[1.6] mt-2 line-clamp-3">
