@@ -235,7 +235,7 @@ useEffect(() => {
                     onChange={handleChange}
                     maxLength={1000}
                     required
-                    rows={5}
+                    rows={8}
                     placeholder="Type your message here..."
                     className="input-ui pt-2"
                   />
@@ -361,7 +361,7 @@ useEffect(() => {
       <style>{`
         .input-ui {
           width: 100%;
-          height: 34px;
+          min-height: 34px;
           border: 1px solid #dedede;
           border-radius: 4px;
           padding: 0 12px;

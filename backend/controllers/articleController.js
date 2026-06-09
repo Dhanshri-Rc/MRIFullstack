@@ -199,7 +199,7 @@ exports.update = async (req, res) => {
       }
     });
 
-    console.log("UPDATE BODY:", req.body); // 🔥 DEBUG IMPORTANT
+    
 
     if (req.file) {
       fields.pdfFile = `/uploads/${req.file.filename}`;
