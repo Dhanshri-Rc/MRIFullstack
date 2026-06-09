@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap'); */
+
+
+
+
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    
+    color: #1A1A1A;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply bg-[#C9960C] hover:bg-[#B8860B] text-white font-semibold py-2.5 px-6 transition-colors duration-200 text-sm tracking-wide uppercase inline-flex items-center gap-2;
+  }
+  .btn-outline {
+    @apply border border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white text-[#1A1A1A] font-semibold py-2.5 px-6 transition-colors duration-200 text-sm tracking-wide uppercase inline-flex items-center gap-2;
+  }
+  .section-label {
+    @apply text-[#C9960C] text-sm font-semibold tracking-widest uppercase;
+  }
+  .gold-underline {
+    @apply border-b-2 border-[#C9960C] pb-1;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.icon-gold {
+  color: #C9960C;
+  stroke: #C9960C;
+}
