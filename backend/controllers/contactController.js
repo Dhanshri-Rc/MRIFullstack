@@ -2,10 +2,14 @@ const { pool } = require('../config/db');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
+console.log("MAIL_USER:", process.env.MAIL_USER);
+console.log("MAIL_PASS:", process.env.MAIL_PASS);
+
 function getTransporter() {
   return nodemailer.createTransport({
+    service: "gmail",   // 🔥 MUST ADD
     host: process.env.MAIL_HOST,
-    port: parseInt(process.env.MAIL_PORT),
+    port: 587,
     secure: false,
     auth: {
       user: process.env.MAIL_USER,
@@ -14,41 +18,43 @@ function getTransporter() {
   });
 }
 
+const sendMail = require("../utils/sendMail");
+
 exports.submitContact = async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
-    if (!name || !email || !message)
-      return res.status(400).json({ success: false, message: 'Name, email and message are required' });
 
-    await pool.query(
-      'INSERT INTO contact_messages (name, email, subject, message) VALUES (?, ?, ?, ?)',
-      [name, email, subject, message]
-    );
-
-    // Send email (non-blocking)
-    try {
-      const transporter = getTransporter();
-      await transporter.sendMail({
-        from: `"MRI Xplore" <${process.env.MAIL_USER}>`,
-        to: process.env.MAIL_TO,
-        subject: `New Contact Message: ${subject || 'General Inquiry'}`,
-        html: `
-          <h2>New Contact Message</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Subject:</strong> ${subject}</p>
-          <p><strong>Message:</strong><br>${message}</p>
-        `,
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
       });
-    } catch (mailErr) {
-      console.error('Email send failed:', mailErr.message);
-      // Don't fail the request if email fails
     }
 
-    res.json({ success: true, message: 'Message sent successfully.' });
+    // 1️⃣ SAVE TO DATABASE (THIS WAS MISSING)
+    await pool.query(
+      "INSERT INTO contact_messages (name, email, subject, message, status) VALUES (?, ?, ?, ?, ?)",
+      [name, email, subject, message, "pending"]
+    );
+
+    // 2️⃣ SEND EMAIL
+    try {
+      await sendMail({ name, email, subject, message });
+    } catch (mailErr) {
+      console.log("Email failed but message saved:", mailErr.message);
+    }
+
+    res.json({
+      success: true,
+      message: "Message sent successfully",
+    });
+
   } catch (err) {
     console.error(err);
-    res.status(500).json({ success: false, message: 'Failed to send message. Please try again.' });
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
   }
 };
 
@@ -129,3 +135,6 @@ exports.updateStatus = async (req, res) => {
     });
   }
 };
+
+
+
