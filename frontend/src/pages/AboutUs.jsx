@@ -1,4 +1,3 @@
-
 import Breadcrumb from "../components/Breadcrumb";
 import bg1 from "../assets/1bg.webp";
 import building from "../assets/building.webp";
@@ -17,7 +16,6 @@ import {
   ShieldCheck,
   UserCheck,
   Lightbulb,
- 
 } from "lucide-react";
 
 import { motion } from "framer-motion";
