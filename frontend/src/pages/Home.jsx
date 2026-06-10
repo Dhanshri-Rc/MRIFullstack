@@ -109,7 +109,7 @@ export default function Home() {
         <img
           src={Homebg}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-right"
+          className="absolute  w-full h-full object-cover "
         />
         <div className="absolute bg-white/10 max-sm:bg-white/55" />
 
@@ -118,7 +118,7 @@ export default function Home() {
             <h1 className="font-serif text-[28px] sm:text-[30px] md:text-[32px] font-bold leading-tight">
               Welcome to <span className="text-[#b98012]">MRI Xplore</span>
             </h1>
-            <p className="text-[13px] sm:text-[14px] text-[#4b5563] mt-2">
+            <p className="text-[13px] sm:text-[14px] text-[#1d2025] mt-2">
               Your comprehensive search engine for all MRI journals in India
             </p>
           </div>

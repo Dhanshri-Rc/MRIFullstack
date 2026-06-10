@@ -94,7 +94,7 @@ useEffect(() => {
         <img
           src={bg6}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-right"
+          className="absolute inset-0 w-full h-full object-cover "
         />
         <div className="absolute " />
 

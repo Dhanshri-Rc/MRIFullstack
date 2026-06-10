@@ -139,7 +139,7 @@ export default function Journals() {
         <img
           src={bg2}
           alt=""
-          className="absolute w-full h-full object-cover object-right "
+          className="absolute w-full h-full object-cover  "
         />
         <div className="absolute " />
 

@@ -80,7 +80,7 @@ export default function AdvancedSearch() {
         <img
           src={bannerBg}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-right"
+          className="absolute inset-0 w-full h-full object-cover "
         />
         <div className="absolute  bg-white/10 max-sm:bg-white/55" />
 
@@ -89,7 +89,7 @@ export default function AdvancedSearch() {
             <h1 className="font-serif text-[28px] sm:text-[30px] md:text-[32px] font-bold leading-tight">
               Advanced Search
             </h1>
-            <p className="text-[13px] sm:text-[14px] text-[#4b5563] mt-2">
+            <p className="text-[13px] sm:text-[14px] text-[#24282e] mt-2">
               Search across all MRI journals with ease
             </p>
           </motion.div>

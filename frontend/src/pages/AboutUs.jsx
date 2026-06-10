@@ -129,7 +129,7 @@ export default function About() {
   return (
     <div className="">
       {/* Hero */}
-      <section className="relative bg-[#fdf8f0] overflow-hidden py-12 px-10">
+      <section className="relative bg-[#fdf8f0] overflow-hidden lg:py-12 md:py-10 py-6 lg:px-10 px-2 md:px-6 justify">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-60 "
           style={{ backgroundImage: `url(${bg1})` }}
@@ -176,214 +176,354 @@ export default function About() {
       </div>
 
       {/* Mission & Vision */}
-      <section className="py-12 md:py-6 bg-white px-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          {/* SINGLE CONTAINER */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="relative bg-white rounded-xl shadow-[0_4px_25px_rgba(0,0,0,0.06)] overflow-hidden"
-          >
-            {/* LEFT THICK BORDER (animated) */}
-            <motion.div
-              initial={{ height: 0 }}
-              whileInView={{ height: "100%" }}
-              transition={{ duration: 0.8 }}
-              className="absolute left-0 top-0 w-[10px] md:w-[15px] bg-[#B8860B] rounded-r-full"
+    <section className="lg:py-12 md:py-10 py-6 bg-white px-6 lg:px-14 md:px-10">
+  <div className="max-w-7xl mx-auto w-full">
+
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+      className="relative bg-white rounded-xl shadow-[0_4px_25px_rgba(0,0,0,0.06)] overflow-hidden w-full"
+    >
+
+      {/* LEFT BORDER */}
+      <motion.div
+        initial={{ height: 0 }}
+        whileInView={{ height: "100%" }}
+        transition={{ duration: 0.8 }}
+        className="absolute left-0 top-0 w-[6px] sm:w-[8px] md:w-[10px] lg:w-[15px] bg-[#B8860B] rounded-r-full"
+      />
+
+      {/* GRID FIX FOR TABLET */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-0 lg:gap-0 w-full">
+
+        {/* MISSION */}
+        <motion.div
+          whileHover={{ y: -5 }}
+          className="
+            flex flex-col lg:flex-row
+            md:flex-col     /* ⭐ FIX: tablet becomes vertical */
+            sm:flex-row
+            gap-4 sm:gap-6
+            p-4 sm:p-6 lg:p-8
+            items-start w-full
+          "
+        >
+
+          {/* IMAGE */}
+          <div className="
+            overflow-hidden rounded-lg w-full
+            sm:w-40 md:w-full lg:w-44
+            h-44 sm:h-48 md:h-56 lg:h-52
+            flex-shrink-0
+          ">
+            <motion.img
+              src={building}
+              alt="Building"
+              whileHover={{ scale: 1.05 }}
+              className="w-full h-full object-cover"
             />
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              {/* LEFT SIDE - MISSION */}
-              <motion.div
-                whileHover={{ y: -5 }}
-                className="flex flex-col sm:flex-row gap-4 sm:gap-6 p-5 sm:p-8 items-start transition"
-              >
-                {/* Image with zoom */}
-                <div className="overflow-hidden rounded-lg w-full sm:w-44 h-48 sm:h-52 flex-shrink-0">
-                  <motion.img
-                    src={building}
-                    alt="Building"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <motion.span
-                      whileHover={{ rotate: 10, scale: 1.2 }}
-                      className="text-[#B8860B]"
-                    >
-                      <Goal className="w-5 h-5" />
-                    </motion.span>
-
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
-                      Our Mission
-                    </h3>
-                  </div>
-
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-3">
-                    To promote excellence in mathematical research, foster
-                    collaboration, and support the growth of the mathematics
-                    community in India and beyond.
-                  </p>
-
-                  {/* Animated line */}
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: 40 }}
-                    transition={{ duration: 0.5 }}
-                    className="h-0.5 bg-[#B8860B] mb-4"
-                  />
-
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    We are committed to advancing knowledge, encouraging
-                    innovation, and inspiring the next generation of
-                    mathematicians.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* RIGHT SIDE - VISION */}
-              <motion.div
-                whileHover={{ y: -5 }}
-                className="flex flex-col sm:flex-row gap-4 sm:gap-6 p-5 sm:p-8 items-start border-t md:border-t-0 md:border-l border-gray-200 transition"
-              >
-                {/* Image with zoom */}
-                <div className="overflow-hidden rounded-lg w-full sm:w-44 h-48 sm:h-52 flex-shrink-0">
-                  <motion.img
-                    src={bgClass}
-                    alt="Research"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <motion.span
-                      whileHover={{ rotate: -10, scale: 1.2 }}
-                      className="text-[#B8860B]"
-                    >
-                      <Eye className="w-5 h-5" />
-                    </motion.span>
-
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
-                      Our Vision
-                    </h3>
-                  </div>
-
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-3">
-                    To be a leading institute recognized globally for excellence
-                    in mathematical research, education, and outreach.
-                  </p>
-
-                  {/* Animated line */}
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: 40 }}
-                    transition={{ duration: 0.5 }}
-                    className="h-0.5 bg-[#B8860B] mb-4"
-                  />
-
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    We envision a world where mathematics drives discovery,
-                    solves real-world challenges, and improves lives.
-                  </p>
-                </div>
-              </motion.div>
+          {/* TEXT */}
+          <div className="w-full min-w-0">
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
+              <Goal className="w-5 h-5 text-[#B8860B]" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
+                Our Mission
+              </h3>
             </div>
-          </motion.div>
-        </div>
-      </section>
+
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-3 break-words">
+              To promote excellence in mathematical research, foster collaboration,
+              and support the growth of the mathematics community in India and beyond.
+            </p>
+
+            <div className="h-0.5 bg-[#B8860B] mb-4 w-10" />
+
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed break-words">
+              We are committed to advancing knowledge, encouraging innovation,
+              and inspiring the next generation of mathematicians.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* VISION */}
+        <motion.div
+          whileHover={{ y: -5 }}
+          className="
+            flex flex-col lg:flex-row
+            md:flex-col     /* ⭐ FIX: tablet stack fix */
+            sm:flex-row
+            gap-4 sm:gap-6
+            p-4 sm:p-6 lg:p-8
+            items-start border-t md:border-t-0 md:border-l border-gray-200 w-full
+          "
+        >
+
+          {/* IMAGE */}
+          <div className="
+            overflow-hidden rounded-lg w-full
+            sm:w-40 md:w-full lg:w-44
+            h-44 sm:h-48 md:h-56 lg:h-52
+            flex-shrink-0
+          ">
+            <motion.img
+              src={bgClass}
+              alt="Research"
+              whileHover={{ scale: 1.05 }}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* TEXT */}
+          <div className="w-full min-w-0">
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
+              <Eye className="w-5 h-5 text-[#B8860B]" />
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
+                Our Vision
+              </h3>
+            </div>
+
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-3 break-words">
+              To be a leading institute recognized globally for excellence
+              in mathematical research, education, and outreach.
+            </p>
+
+            <div className="h-0.5 bg-[#B8860B] mb-4 w-10" />
+
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed break-words">
+              We envision a world where mathematics drives discovery,
+              solves real-world challenges, and improves lives.
+            </p>
+          </div>
+
+        </motion.div>
+
+      </div>
+    </motion.div>
+
+  </div>
+</section>
 
       {/* Stats */}
-      <section className="bg-gray-50 py-6 px-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-white rounded-xl shadow flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-gray-200">
-            {stats.map((s, i) => {
-              const count = useCounter(s.num);
+     <section className="bg-gray-50 py-6 px-6 sm:px-6 md:px-10 lg:px-14">
+  <div className="max-w-7xl mx-auto w-full">
 
-              return (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="flex-1 flex items-center justify-center gap-3 py-6 px-4 cursor-pointer"
-                >
-                  <div className="text-[#B8860B]">{s.icon}</div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900">
-                      {count}+
-                    </div>
-                    <div className="text-gray-900 text-sm font-semibold">
-                      {s.label}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+    <div className="
+      bg-white rounded-xl shadow
+      flex flex-col sm:flex-col md:flex-row
+      divide-y md:divide-y-0 md:divide-x
+      divide-gray-200
+      w-full
+    ">
+
+      {stats.map((s, i) => {
+        const count = useCounter(s.num);
+
+        return (
+          <motion.div
+            key={i}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="
+              flex-1 flex items-center justify-start sm:justify-center
+              gap-3 py-5 sm:py-6 px-4 sm:px-6
+              cursor-pointer w-full
+            "
+          >
+
+            <div className="text-[#B8860B] flex-shrink-0">
+              {s.icon}
+            </div>
+
+            <div className="min-w-0">
+              <div className="text-xl sm:text-2xl font-bold text-gray-900">
+                {count}+
+              </div>
+
+              <div className="text-gray-900 text-xs sm:text-sm font-semibold break-words">
+                {s.label}
+              </div>
+            </div>
+
+          </motion.div>
+        );
+      })}
+
+    </div>
+
+  </div>
+</section>
 
       {/* Objectives */}
-      <section className="py-6 bg-white px-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Our Objectives
-          </h2>
+     <section className="py-6 bg-white px-6 sm:px-6 lg:px-14 md:px-10">
+  <div className="max-w-7xl mx-auto w-full">
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {objectives.map((o, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                className="text-center px-4 py-6 bg-white rounded-lg hover:shadow-lg transition"
-              >
-                <div className="w-16 h-16 rounded-full bg-[#fdf8f0] flex items-center justify-center mx-auto mb-3 text-[#B8860B]">
-                  {o.icon}
-                </div>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
+      Our Objectives
+    </h2>
 
-                <h4 className="font-bold text-gray-900 text-sm mb-2">
-                  {o.title}
-                </h4>
+    <div className="
+      grid grid-cols-1
+      sm:grid-cols-2
+      md:grid-cols-3
+      lg:grid-cols-6
+      gap-4 sm:gap-5 lg:gap-6
+      w-full
+    ">
 
-                <p className="text-gray-500 text-xs leading-relaxed">
-                  {o.desc}
-                </p>
-              </motion.div>
-            ))}
+      {objectives.map((o, i) => (
+        <motion.div
+          key={i}
+          whileHover={{ scale: 1.06, y: -6 }}
+          transition={{ type: "spring", stiffness: 260, damping: 18 }}
+          className="
+            relative text-center
+            px-4 py-5 sm:py-6
+            bg-white rounded-xl
+            border border-gray-100
+            shadow-sm
+            hover:shadow-xl
+            hover:border-[#e6c37a]
+            transition-all duration-300
+            w-full
+            group
+            overflow-hidden
+          "
+        >
+
+          {/* subtle hover glow background */}
+          <div className="
+            absolute inset-0
+            bg-gradient-to-b from-[#fff8ec] to-transparent
+            opacity-0 group-hover:opacity-100
+            transition-opacity duration-300
+          " />
+
+          {/* ICON BOX */}
+          <div className="
+            relative z-10
+            w-14 h-14 sm:w-16 sm:h-16
+            rounded-full
+            bg-[#fdf8f0]
+            flex items-center justify-center
+            mx-auto mb-3
+            text-[#B8860B]
+            group-hover:scale-110
+            transition-transform duration-300
+          ">
+            {o.icon}
           </div>
-        </div>
-      </section>
+
+          {/* TITLE */}
+          <h4 className="
+            relative z-10
+            font-bold text-gray-900 text-sm mb-2
+            break-words
+            group-hover:text-[#b8860b]
+            transition-colors duration-300
+          ">
+            {o.title}
+          </h4>
+
+          {/* DESCRIPTION */}
+          <p className="
+            relative z-10
+            text-gray-500 text-xs leading-relaxed
+            break-words
+          ">
+            {o.desc}
+          </p>
+
+        </motion.div>
+      ))}
+
+    </div>
+
+  </div>
+</section>
 
       {/* Values */}
-      <section className="py-6 bg-[#fdf8f0] px-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {values.map((v, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -5, scale: 1.05 }}
-                className="text-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition"
-              >
-                <div className="text-[#B8860B] mb-3 flex justify-center">
-                  {v.icon}
-                </div>
-                <h4 className="font-semibold text-gray-900 text-sm mb-2">
-                  {v.title}
-                </h4>
-                <p className="text-gray-500 text-xs">{v.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     <section className="py-6 bg-[#fdf8f0] px-6 sm:px-6 lg:px-14 md:px-10">
+  <div className="max-w-7xl mx-auto w-full">
 
+    <div className="
+      grid grid-cols-1
+      sm:grid-cols-2
+      md:grid-cols-3
+      lg:grid-cols-5
+      gap-4 sm:gap-5 lg:gap-6
+      w-full
+    ">
+
+      {values.map((v, i) => (
+        <motion.div
+          key={i}
+          whileHover={{ y: -6, scale: 1.06 }}
+          transition={{ type: "spring", stiffness: 260, damping: 18 }}
+          className="
+            relative text-center
+            bg-white
+            p-5 sm:p-6
+            rounded-xl
+            border border-gray-100
+            shadow-sm
+            hover:shadow-xl
+            hover:border-[#e6c37a]
+            transition-all duration-300
+            w-full
+            overflow-hidden
+            group
+          "
+        >
+
+          {/* hover glow background */}
+          <div className="
+            absolute inset-0
+            bg-gradient-to-b from-[#fff7e6] to-transparent
+            opacity-0 group-hover:opacity-100
+            transition-opacity duration-300
+          " />
+
+          {/* ICON */}
+          <div className="
+            relative z-10
+            text-[#B8860B]
+            mb-3 flex justify-center
+            group-hover:scale-110
+            transition-transform duration-300
+          ">
+            {v.icon}
+          </div>
+
+          {/* TITLE */}
+          <h4 className="
+            relative z-10
+            font-semibold text-gray-900 text-sm mb-2
+            group-hover:text-[#b8860b]
+            transition-colors duration-300
+            break-words
+          ">
+            {v.title}
+          </h4>
+
+          {/* DESCRIPTION */}
+          <p className="
+            relative z-10
+            text-gray-500 text-xs
+            break-words
+          ">
+            {v.desc}
+          </p>
+
+        </motion.div>
+      ))}
+
+    </div>
+
+  </div>
+</section>
      
     </div>
   );
