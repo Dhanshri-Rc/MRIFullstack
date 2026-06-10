@@ -1514,7 +1514,7 @@ function ArticleCard({ article, onCopyCitation, copiedCitation, viewMode }) {
         </p>
         <button
           onClick={onCopyCitation}
-          className="mt-3 w-[100px] text-center items-center px-2 py-1 border border-[#d69a22] rounded-md text-[#b87518] text-[10px] hover:bg-[#fff8ec]"
+          className="mt-2 w-[100px] text-center items-center px-2 py-1 border border-[#d69a22] rounded-md text-[#b87518] text-[10px] hover:bg-[#fff8ec]"
         >
           {copiedCitation ? "✓ Copied!" : "Copy Citation"}
         </button>
