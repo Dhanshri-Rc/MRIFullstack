@@ -15,7 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import bg2 from "../assets/hbg2.png";
+import bg2 from "../assets/hbg2.webp";
 import { Link } from "react-router-dom";
 import { getJournals } from "../api/api";
 

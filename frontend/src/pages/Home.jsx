@@ -12,7 +12,7 @@ import {
   Library,
   ChevronRight,
 } from "lucide-react";
-import Homebg from "../assets/hbg.png";
+import Homebg from "../assets/hbg.webp";
 import { getJournals, getDashboardStats } from "../api/api";
 import { Link } from "react-router-dom";
 

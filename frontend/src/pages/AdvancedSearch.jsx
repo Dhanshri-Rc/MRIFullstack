@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Search, BookOpen, ChevronDown, Lightbulb } from "lucide-react";
-import bannerBg from "../assets/hbg.png";
+import bannerBg from "../assets/hbg.webp";
 import { getJournals } from "../api/api";
 
 const fadeUp = {

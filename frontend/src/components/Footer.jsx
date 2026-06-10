@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { Mail, Building2 } from "lucide-react";
-import logo from "../assets/flogo.png";
+import logo from "../assets/flogo.webp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },

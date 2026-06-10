@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+
 import Breadcrumb from "../components/Breadcrumb";
-import bg1 from "../assets/1bg.png";
-import building from "../assets/building.png";
-import bgClass from "../assets/vissionn.png";
+import bg1 from "../assets/1bg.webp";
+import building from "../assets/building.webp";
+import bgClass from "../assets/vissionn.webp";
 import {
   Goal,
   Eye,
@@ -17,7 +17,7 @@ import {
   ShieldCheck,
   UserCheck,
   Lightbulb,
-  ArrowRight,
+ 
 } from "lucide-react";
 
 import { motion } from "framer-motion";

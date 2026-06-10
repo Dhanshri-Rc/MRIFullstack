@@ -13,7 +13,7 @@ import {
   Contact,
   X,
 } from "lucide-react";
-import logo from "../../assets/dlogoo.png";
+import logo from "../../assets/dlogoo.webp";
 
 const navItems = [
   { label: "Dashboard", icon: LayoutDashboard, path: "/admin/dashboard" },

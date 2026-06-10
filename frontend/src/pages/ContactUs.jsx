@@ -1,23 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
-  Plus,
-  Send,
-  Handshake,
- 
-} from "lucide-react";
-import bg6 from "../assets/hbg2.png";
+import {Mail,Phone,MapPin,Clock,Plus,Send,Handshake,} from "lucide-react";
+import bg6 from "../assets/hbg2.webp";
 import { submitContact, getContactInfo } from "../api/api";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-
-
-
-
 
 const fadeUp = {
   hidden: { opacity: 0, y: 22 },
