@@ -56,13 +56,7 @@ export default function Navbar() {
               
             );
           })}
-           {/* <Link
-          to="/login"
-          className="hidden lg:flex h-[38px] px-4 rounded-[7px] border border-[#c8922a] text-[#a4680c] text-[13px] font-semibold items-center gap-2 hover:bg-[#c8922a] hover:text-white hover:-translate-y-[1px] transition-all duration-300"
-        >
-          <UserRound size={15} />
-          Admin Login
-        </Link> */}
+         
         </nav>
 
        
@@ -91,16 +85,16 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="fixed right-0 top-0 h-dvh w-[82vw] max-w-[330px] bg-white z-[70] shadow-[-10px_0_30px_rgba(0,0,0,0.18)]"
+              className="fixed right-0 top-0 h-dvh w-[72vw] max-w-[230px] bg-white z-[70] shadow-[-10px_0_30px_rgba(0,0,0,0.18)]"
             >
-              <div className="h-[70px] px-4 flex items-center justify-between border-b border-[#eadfd3]">
-                <img src={logo} alt="MRI India" className="h-[48px] w-auto" />
+              <div className="h-[70px] px-3 flex items-center justify-between border-b border-[#eadfd3]">
+                <img src={logo} alt="MRI India" className="h-[34px] w-auto" />
 
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-[#fbfaf8]"
+                  className="w-6 h-6 flex items-center justify-center rounded-md border border-[#eadfd3] text-[#000] ml-3"
                 >
-                  <X size={22} />
+                  <X size={18} />
                 </button>
               </div>
 
@@ -113,7 +107,7 @@ export default function Navbar() {
                       key={link.path}
                       to={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className={`px-4 py-3 rounded-[6px] text-[14px] font-medium transition-all ${
+                      className={`px-4 py-3 rounded-[6px] text-[14px] font-semibold transition-all ${
                         active
                           ? "bg-[#fbf1df] text-[#c27a12]"
                           : "text-[#111] hover:bg-[#fbfaf8] hover:text-[#c27a12]"
@@ -124,14 +118,6 @@ export default function Navbar() {
                   );
                 })}
 
-                {/* <Link
-                  to="/admin-login"
-                  onClick={() => setMenuOpen(false)}
-                  className="mt-4 h-[42px] rounded-[6px] border border-[#c8922a] text-[#a4680c] text-[13px] font-semibold flex items-center justify-center gap-2 hover:bg-[#c8922a] hover:text-white transition-all"
-                >
-                  <UserRound size={15} />
-                  Admin Login
-                </Link> */}
               </nav>
             </motion.aside>
           </>
