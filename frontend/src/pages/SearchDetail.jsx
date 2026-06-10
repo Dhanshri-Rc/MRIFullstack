@@ -1113,7 +1113,7 @@ export default function SearchDetail() {
       <Navbar />
 
       {/* Search bar */}
-      <div className="bg-white border-b border-gray-200 py-4 px-4 sm:px-6 sticky top-0 z-30 shadow-sm">
+      <div className="bg-white border-b border-gray-200 py-4 px-4 sm:px-6  top-0 z-30 shadow-sm">
         <div className="max-w-[1800px] mx-auto flex flex-col sm:flex-row gap-3 items-center">
           <div className="flex flex-col sm:flex-row flex-1 max-w-[1200px] w-full gap-2 sm:gap-0">
             <div className="relative flex-1">
