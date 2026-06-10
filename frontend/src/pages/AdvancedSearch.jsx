@@ -82,7 +82,7 @@ export default function AdvancedSearch() {
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-right"
         />
-        <div className="absolute inset-0 bg-white/10 max-sm:bg-white/55" />
+        <div className="absolute  bg-white/10 max-sm:bg-white/55" />
 
         <div className="relative z-10 max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
