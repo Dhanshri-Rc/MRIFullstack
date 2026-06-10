@@ -2,19 +2,19 @@
 // import { useLocation, useNavigate } from "react-router-dom";
 // import {
 //   Search,
-  
+
 //   ChevronDown,
 //   ChevronLeft,
 //   ChevronRight,
 //   ExternalLink,
- 
+
 //   BookOpen,
 //   Filter,
 //   X,
 //   Grid,
 //   List,
 //   Copy,
-  
+
 // } from "lucide-react";
 // import Navbar from "../components/Navbar";
 // import Footer from "../components/Footer";
@@ -716,16 +716,13 @@
 
 //   return (
 //     <div className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow grid grid-cols-[1fr_180px] gap-4 items-center">
-      
+
 //       <div className="flex-1 min-w-0">
-       
 
 //         {/* Title */}
 //         <h3 className="text-[16px] font-bold text-[#0f1b2d] leading-snug hover:text-[#d69a22] cursor-pointer mb-1 transition-colors">
 //           {article.title}
 //         </h3>
-
-      
 
 //         {/* Journal info */}
 //         <p className="text-[12px] text-gray-500 mb-1">
@@ -781,11 +778,7 @@
 //   );
 // }
 
-
-
-
-
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Search,
@@ -793,7 +786,6 @@ import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
-  
   Filter,
   X,
   Grid,
@@ -803,8 +795,6 @@ import {
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { getArticles, getJournals } from "../api/api";
-
-
 
 // ── APA citation builder ──────────────────────────────────────────────────────
 function buildCitation(article) {
@@ -884,7 +874,8 @@ export default function SearchDetail() {
         };
         if (journalId) params.journalId = journalId;
         if (filterYear) params.year = filterYear;
-        if (filterSubject.length > 0) params.subjectArea = filterSubject.join(",");
+        if (filterSubject.length > 0)
+          params.subjectArea = filterSubject.join(",");
         if (filterAccess.length > 0) params.accessType = filterAccess.join(",");
 
         const data = await getArticles(params);
@@ -895,13 +886,21 @@ export default function SearchDetail() {
       }
     };
     fetchArticles();
-  }, [debouncedQuery, journalId, page, filterYear, filterSubject, filterAccess, sortBy]);
+  }, [
+    debouncedQuery,
+    journalId,
+    page,
+    filterYear,
+    filterSubject,
+    filterAccess,
+    sortBy,
+  ]);
 
   // ── Search bar submit ────────────────────────────────────────────────────────
   const doSearch = () => {
     setPage(1);
     navigate(
-      `/search?q=${encodeURIComponent(query.trim())}&journal=${journalId}`
+      `/search?q=${encodeURIComponent(query.trim())}&journal=${journalId}`,
     );
   };
 
@@ -923,8 +922,6 @@ export default function SearchDetail() {
     setJournalSearch("");
     setPage(1);
   };
-
- 
 
   const handleYearChange = (year) => {
     setFilterYear(year);
@@ -953,7 +950,7 @@ export default function SearchDetail() {
     ? journals.filter((j) =>
         (j.shortTitle || j.title || "")
           .toLowerCase()
-          .includes(journalSearch.trim().toLowerCase())
+          .includes(journalSearch.trim().toLowerCase()),
       )
     : journals;
 
@@ -1001,7 +998,10 @@ export default function SearchDetail() {
             </span>
           </label>
 
-          {(showAllJournals ? filteredJournals : filteredJournals.slice(0, 5)).map((j) => (
+          {(showAllJournals
+            ? filteredJournals
+            : filteredJournals.slice(0, 5)
+          ).map((j) => (
             <label
               key={j.id}
               className="flex items-center justify-between cursor-pointer"
@@ -1011,7 +1011,9 @@ export default function SearchDetail() {
                   type="checkbox"
                   checked={journalId === String(j.id)}
                   onChange={() =>
-                    handleJournalChange(journalId === String(j.id) ? "" : String(j.id))
+                    handleJournalChange(
+                      journalId === String(j.id) ? "" : String(j.id),
+                    )
                   }
                   className="accent-[#d69a22]"
                 />
@@ -1031,7 +1033,9 @@ export default function SearchDetail() {
               onClick={() => setShowAllJournals((prev) => !prev)}
               className="text-[12px] text-[#d69a22] hover:underline flex items-center gap-1"
             >
-              {showAllJournals ? "Show less" : `Show more (${filteredJournals.length - 5})`}
+              {showAllJournals
+                ? "Show less"
+                : `Show more (${filteredJournals.length - 5})`}
               <ChevronDown
                 size={12}
                 className={`transition-transform ${showAllJournals ? "rotate-180" : ""}`}
@@ -1044,25 +1048,32 @@ export default function SearchDetail() {
       {/* Publication Year */}
       <div className="border-t border-gray-100 pt-4">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-[13px] font-bold text-gray-900">Publication Year</h3>
+          <h3 className="text-[13px] font-bold text-gray-900">
+            Publication Year
+          </h3>
           <ChevronDown size={14} className="text-gray-500" />
         </div>
-        {["All Years", "2025", "2024", "2023", "2022", "2021 and earlier"].map((y) => {
-          const val =
-            y === "All Years" ? "" : y === "2021 and earlier" ? "2021" : y;
-          return (
-            <label key={y} className="flex items-center gap-2 mb-2 cursor-pointer">
-              <input
-                type="radio"
-                name="year"
-                checked={filterYear === val}
-                onChange={() => handleYearChange(val)}
-                className="accent-[#d69a22]"
-              />
-              <span className="text-[12px] text-gray-700">{y}</span>
-            </label>
-          );
-        })}
+        {["All Years", "2025", "2024", "2023", "2022", "2021 and earlier"].map(
+          (y) => {
+            const val =
+              y === "All Years" ? "" : y === "2021 and earlier" ? "2021" : y;
+            return (
+              <label
+                key={y}
+                className="flex items-center gap-2 mb-2 cursor-pointer"
+              >
+                <input
+                  type="radio"
+                  name="year"
+                  checked={filterYear === val}
+                  onChange={() => handleYearChange(val)}
+                  className="accent-[#d69a22]"
+                />
+                <span className="text-[12px] text-gray-700">{y}</span>
+              </label>
+            );
+          },
+        )}
         <div className="flex items-center gap-2 mt-2">
           <input
             type="text"
@@ -1088,7 +1099,7 @@ export default function SearchDetail() {
           Apply
         </button>
       </div>
-{/* <button
+      {/* <button
         onClick={handleClearFilters}
         className="w-full py-2 rounded-lg border border-gray-200 text-[12px] text-gray-500 hover:bg-gray-50 flex items-center justify-center gap-1"
       >
@@ -1104,7 +1115,7 @@ export default function SearchDetail() {
       {/* Search bar */}
       <div className="bg-white border-b border-gray-200 py-4 px-4 sm:px-6 sticky top-0 z-30 shadow-sm">
         <div className="max-w-[1800px] mx-auto flex flex-col sm:flex-row gap-3 items-center">
-          <div className="flex flex-1 max-w-[1200px] w-full">
+          <div className="flex flex-col sm:flex-row flex-1 max-w-[1200px] w-full gap-2 sm:gap-0">
             <div className="relative flex-1">
               <Search
                 size={16}
@@ -1119,7 +1130,10 @@ export default function SearchDetail() {
               />
               {query && (
                 <button
-                  onClick={() => { setQuery(""); setPage(1); }}
+                  onClick={() => {
+                    setQuery("");
+                    setPage(1);
+                  }}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
                 >
                   <X size={14} className="text-gray-400" />
@@ -1130,7 +1144,7 @@ export default function SearchDetail() {
               <select
                 value={journalId}
                 onChange={(e) => handleJournalChange(e.target.value)}
-                className="h-full pl-3 pr-8 text-[13px] bg-white focus:outline-none appearance-none text-gray-600 min-w-[140px]"
+                className="h-full pl-3 pr-8 text-[13px] bg-white focus:outline-none appearance-none text-gray-600 w-full sm:min-w-[140px]"
               >
                 <option value="">All Journals</option>
                 {journals.map((j) => (
@@ -1146,8 +1160,10 @@ export default function SearchDetail() {
             </div>
             <button
               onClick={doSearch}
-              className="px-5 py-2.5 rounded-r-lg text-white text-[13px] font-bold flex items-center gap-2"
-              style={{ background: "linear-gradient(135deg, #d69a22, #b8821a)" }}
+              className="px-5 py-2.5 w-full sm:w-auto rounded-lg sm:rounded-l-none text-white text-[13px] font-bold flex items-center justify-center gap-2"
+              style={{
+                background: "linear-gradient(135deg, #d69a22, #b8821a)",
+              }}
             >
               <Search size={14} /> Search
             </button>
@@ -1163,41 +1179,49 @@ export default function SearchDetail() {
               "Searching..."
             ) : (
               <>
-                Showing <b>{from}-{to}</b> of <b>{total.toLocaleString()}</b> results
+                Showing{" "}
+                <b>
+                  {from}-{to}
+                </b>{" "}
+                of <b>{total.toLocaleString()}</b> results
                 {debouncedQuery && (
-                  <> for <span className="text-[#d69a22] font-semibold">"{debouncedQuery}"</span></>
+                  <>
+                    {" "}
+                    for{" "}
+                    <span className="text-[#d69a22] font-semibold">
+                      "{debouncedQuery}"
+                    </span>
+                  </>
                 )}
               </>
             )}
           </p>
           <div className="flex items-center gap-3">
-       <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3">
+              {/* LIST BUTTON */}
+              <button
+                onClick={() => setViewMode("list")}
+                className={`w-10 h-10 flex items-center justify-center rounded-lg border transition-all duration-200 ${
+                  viewMode === "list"
+                    ? "bg-[#d69a22] border-[#d69a22] text-white shadow-sm"
+                    : "bg-white border-gray-200 text-gray-500 hover:border-[#d69a22] hover:text-[#d69a22]"
+                }`}
+              >
+                <List size={16} />
+              </button>
 
-  {/* LIST BUTTON */}
-  <button
-    onClick={() => setViewMode("list")}
-    className={`w-10 h-10 flex items-center justify-center rounded-lg border transition-all duration-200 ${
-      viewMode === "list"
-        ? "bg-[#d69a22] border-[#d69a22] text-white shadow-sm"
-        : "bg-white border-gray-200 text-gray-500 hover:border-[#d69a22] hover:text-[#d69a22]"
-    }`}
-  >
-    <List size={16} />
-  </button>
-
-  {/* GRID BUTTON */}
-  <button
-    onClick={() => setViewMode("grid")}
-    className={`w-10 h-10 flex items-center justify-center rounded-lg border transition-all duration-200 ${
-      viewMode === "grid"
-        ? "bg-[#d69a22] border-[#d69a22] text-white shadow-sm"
-        : "bg-white border-gray-200 text-gray-500 hover:border-[#d69a22] hover:text-[#d69a22]"
-    }`}
-  >
-    <Grid size={16} />
-  </button>
-
-</div>
+              {/* GRID BUTTON */}
+              <button
+                onClick={() => setViewMode("grid")}
+                className={`w-10 h-10 flex items-center justify-center rounded-lg border transition-all duration-200 ${
+                  viewMode === "grid"
+                    ? "bg-[#d69a22] border-[#d69a22] text-white shadow-sm"
+                    : "bg-white border-gray-200 text-gray-500 hover:border-[#d69a22] hover:text-[#d69a22]"
+                }`}
+              >
+                <Grid size={16} />
+              </button>
+            </div>
             <button
               className="lg:hidden flex items-center gap-1 px-3 py-2 border border-gray-200 rounded-lg text-[12px] text-gray-600"
               onClick={() => setShowMobileFilter(true)}
@@ -1207,12 +1231,14 @@ export default function SearchDetail() {
           </div>
         </div>
 
-        <div className="flex gap-5">
+        <div className="flex flex-col lg:flex-row gap-5">
           {/* Sidebar */}
-          <aside className="hidden lg:block w-[220px] shrink-0">
+          <aside className="hidden lg:block w-full lg:w-[220px] shrink-0">
             <div className="bg-white border border-gray-200 rounded-xl p-4 sticky top-[90px]">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-[13px] font-bold text-gray-900">Refine Results</h2>
+                <h2 className="text-[13px] font-bold text-gray-900">
+                  Refine Results
+                </h2>
                 <button
                   onClick={handleClearFilters}
                   className="text-[11px] text-[#d69a22] hover:underline"
@@ -1254,7 +1280,7 @@ export default function SearchDetail() {
               <div
                 className={
                   viewMode === "grid"
-                    ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4"
+                    ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4"
                     : "space-y-4"
                 }
               >
@@ -1265,11 +1291,17 @@ export default function SearchDetail() {
                     idx={(page - 1) * limit + idx + 1}
                     saved={savedArticles[article.id]}
                     onSave={() =>
-                      setSavedArticles((s) => ({ ...s, [article.id]: !s[article.id] }))
+                      setSavedArticles((s) => ({
+                        ...s,
+                        [article.id]: !s[article.id],
+                      }))
                     }
                     expanded={expandedAbstract[article.id]}
                     onToggleAbstract={() =>
-                      setExpandedAbstract((e) => ({ ...e, [article.id]: !e[article.id] }))
+                      setExpandedAbstract((e) => ({
+                        ...e,
+                        [article.id]: !e[article.id],
+                      }))
                     }
                     onCopyCitation={() => copyCitation(article)}
                     copiedCitation={copiedCitation === article.id}
@@ -1291,7 +1323,7 @@ export default function SearchDetail() {
                     <option>50</option>
                   </select>
                 </p>
-                <div className="flex items-center gap-1">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1}
@@ -1348,7 +1380,7 @@ export default function SearchDetail() {
             className="fixed inset-0 bg-black/50 z-40"
             onClick={() => setShowMobileFilter(false)}
           />
-          <div className="fixed right-0 top-0 h-full w-[300px] bg-white z-50 overflow-y-auto p-5">
+          <div className="fixed right-0 top-0 h-full w-[85vw] max-w-[320px] bg-white z-50 overflow-y-auto p-5">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-[16px] font-bold">Refine Results</h2>
               <button onClick={() => setShowMobileFilter(false)}>
@@ -1366,11 +1398,11 @@ export default function SearchDetail() {
 }
 
 // ── ArticleCard ────────────────────────────────────────────────────────────────
-function ArticleCard({ article, onCopyCitation, copiedCitation,  viewMode }) {
+function ArticleCard({ article, onCopyCitation, copiedCitation, viewMode }) {
   const year = article.publicationDate
     ? new Date(article.publicationDate).getFullYear()
     : "";
- 
+
   const citationText = buildCitation(article);
 
   if (viewMode === "grid") {
@@ -1381,7 +1413,9 @@ function ArticleCard({ article, onCopyCitation, copiedCitation,  viewMode }) {
             {article.title}
           </h3>
           <p className="text-[11px] text-gray-500">
-            <span className="text-[#d69a22] font-semibold">{article.journalName}</span>
+            <span className="text-[#d69a22] font-semibold">
+              {article.journalName}
+            </span>
             {article.volume && ` · Vol ${article.volume}`}
             {article.issue && `, Issue ${article.issue}`}
             {year && ` · ${year}`}
@@ -1411,7 +1445,7 @@ function ArticleCard({ article, onCopyCitation, copiedCitation,  viewMode }) {
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow grid grid-cols-[1fr_180px] gap-4 items-start">
+    <div className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow grid grid-cols-1 md:grid-cols-[1fr_180px] gap-4 items-start gap-4 items-start">
       <div className="flex-1 min-w-0">
         <h3 className="text-[16px] font-bold text-[#0f1b2d] leading-snug  cursor-pointer mb-1 transition-colors">
           {article.title}
@@ -1442,35 +1476,45 @@ function ArticleCard({ article, onCopyCitation, copiedCitation,  viewMode }) {
         )}
 
         <div className="flex flex-wrap gap-2 mt-3">
-   {article.articleUrl ? (
-  <a
-    href={article.articleUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#d69a22] text-[11px] font-semibold text-[#d69a22] hover:bg-[#fff8ec] transition"
-  >
-    <ExternalLink size={11} /> View Articles
-  </a>
-) : (
-  <button
-    disabled
-    className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-gray-200 text-[11px] text-gray-400 cursor-not-allowed"
-  >
-    <ExternalLink size={11} /> No Link
-  </button>
-)}
+          {article.articleUrl ? (
+            <a
+              href={article.articleUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#d69a22] text-[11px] font-semibold text-[#d69a22] hover:bg-[#fff8ec] transition"
+            >
+              <ExternalLink size={11} /> View Articles
+            </a>
+          ) : (
+            <button
+              disabled
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-gray-200 text-[11px] text-gray-400 cursor-not-allowed"
+            >
+              <ExternalLink size={11} /> No Link
+            </button>
+          )}
+
+          {/* ✅ NEW: Cite Button for mobile/list view */}
+          <button
+            onClick={onCopyCitation}
+            className="flex md:hidden items-center gap-1 px-2.5 py-1.5 rounded-lg border border-gray-200 text-[11px] text-gray-600 hover:bg-gray-50 transition"
+          >
+            <Copy size={11} /> Cite
+          </button>
         </div>
       </div>
 
       {/* Right: citation */}
-      <div className="bg-[#faf7f2] border border-[#e5d6c2] rounded-xl p-2 w-[180px] shrink-0 self-start">
-        <h4 className="font-semibold text-[#b87518] text-[13px] mb-1">How to Cite</h4>
+      <div className="hidden md:block bg-[#faf7f2] border border-[#e5d6c2] rounded-xl p-2 w-[180px] shrink-0 self-start">
+        <h4 className="font-semibold text-[#b87518] text-[13px] mb-1">
+          How to Cite
+        </h4>
         <p className="text-[9px] leading-4 text-gray-700 line-clamp-6 ">
           {citationText}
         </p>
         <button
           onClick={onCopyCitation}
-          className="mt-3 w-[100px] text-center items-center px-2 py-1 border border-[#d69a22] rounded-md text-[#b87518] text-[10px] hover:bg-[#fff8ec]"
+          className="mt-2 w-[100px] text-center items-center px-2 py-1 border border-[#d69a22] rounded-md text-[#b87518] text-[10px] hover:bg-[#fff8ec]"
         >
           {copiedCitation ? "✓ Copied!" : "Copy Citation"}
         </button>
