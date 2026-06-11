@@ -16,6 +16,7 @@ import AdminArticles from '../pages/admin/AdminArticles';
 import AddEditArticle from '../pages/admin/AddEditArticle';
 import BulkUpload from '../pages/admin/BulkUpload';
 import ContactAdmin from '../pages/admin/ContactAdmin';
+import PrivacyPolicy from '../pages/FooterPages/PrivacyPolicy';
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -33,6 +34,7 @@ export default function AppRoutes() {
       <Route path="/contact" element={<MainLayout><ContactUs /></MainLayout>} />
       <Route path="/advanced-search" element={<MainLayout><AdvancedSearch /></MainLayout>} />
       <Route path="/search" element={<SearchDetail />} />
+      <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
 
       {/* Auth */}
       <Route path="/login" element={<AdminLogin />} />
