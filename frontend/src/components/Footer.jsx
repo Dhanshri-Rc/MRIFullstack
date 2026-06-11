@@ -101,7 +101,7 @@ export default function Footer() {
             <h4 className="text-[12px] font-bold mb-2">Policies</h4>
             <div className="space-y-1.5">
               <FooterLink to="/privacy-policy">Privacy Policy</FooterLink>
-              <FooterLink to="/terms">Terms of Use</FooterLink>
+              <FooterLink to="/terms-of-use">Terms of Use</FooterLink>
               <FooterLink to="/refund-policy">Refund Policy</FooterLink>
               <FooterLink to="/cookie-policy">Cookie Policy</FooterLink>
             </div>
