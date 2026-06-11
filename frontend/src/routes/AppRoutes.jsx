@@ -17,6 +17,9 @@ import AddEditArticle from '../pages/admin/AddEditArticle';
 import BulkUpload from '../pages/admin/BulkUpload';
 import ContactAdmin from '../pages/admin/ContactAdmin';
 import PrivacyPolicy from '../pages/FooterPages/PrivacyPolicy';
+import TermsOfUse from '../pages/FooterPages/TermsOfUse';
+import RefundPolicy from '../pages/FooterPages/RefundPolicy';
+
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -35,7 +38,8 @@ export default function AppRoutes() {
       <Route path="/advanced-search" element={<MainLayout><AdvancedSearch /></MainLayout>} />
       <Route path="/search" element={<SearchDetail />} />
       <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
-
+      <Route path="/terms-of-use" element={<MainLayout><TermsOfUse/></MainLayout>} />
+      <Route path="/refund-policy" element={<MainLayout><RefundPolicy/></MainLayout>} />
       {/* Auth */}
       <Route path="/login" element={<AdminLogin />} />
 
