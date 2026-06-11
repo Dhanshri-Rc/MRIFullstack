@@ -86,10 +86,10 @@ export default function AdvancedSearch() {
 
         <div className="relative z-10 max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <h1 className="font-serif text-[28px] sm:text-[30px] md:text-[32px] font-bold leading-tight">
+            <h1 className="font-serif text-[22px] sm:text-[28px] md:text-[32px] font-bold leading-tight">
               Advanced Search
             </h1>
-            <p className="text-[13px] sm:text-[14px] text-[#24282e] mt-2">
+            <p className="text-[12px] sm:text-[14px] text-[#24282e] mt-2">
               Search across all MRI journals with ease
             </p>
           </motion.div>

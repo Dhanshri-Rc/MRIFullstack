@@ -115,10 +115,10 @@ export default function Home() {
 
         <div className="relative max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="max-w-[560px]">
-            <h1 className="font-serif text-[28px] sm:text-[30px] md:text-[32px] font-bold leading-tight">
+            <h1 className="font-serif text-[22px] sm:text-[28px] md:text-[32px] font-bold leading-tight">
               Welcome to <span className="text-[#b98012]">MRI Xplore</span>
             </h1>
-            <p className="text-[13px] sm:text-[14px] text-[#1d2025] mt-2">
+            <p className="text-[12px] sm:text-[14px] text-[#1d2025] mt-2">
               Your comprehensive search engine for all MRI journals in India
             </p>
           </div>
