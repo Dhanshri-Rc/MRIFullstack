@@ -79,7 +79,7 @@ export default function TermsOfUse() {
           transition={{ duration: 0.8 }}
           className="relative z-10 max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <h1 className="text-3xl lg:text-4xl font-serif text-gray-900 mb-3">
+          <h1 className="text-2xl lg:text-3xl font-serif text-gray-900 mb-3">
             Terms of Use
           </h1>
 
@@ -90,11 +90,11 @@ export default function TermsOfUse() {
             className="h-0.5 bg-[#B8860B] mb-4"
           />
 
-          <p className="text-[#B8860B] font-semibold text-lg lg:text-xl mb-3">
+          <p className="text-[#B8860B] font-semibold text-[18px] mb-3">
             Guidelines for Accessing and Using MRI Xplore
           </p>
 
-          <p className="text-gray-600 text-sm leading-relaxed max-w-3xl">
+          <p className="text-gray-600 text-[14px] leading-relaxed max-w-3xl">
             These Terms of Use govern your access to and use of MRI Xplore,
             including all services, content, resources, and features provided
             through the platform.
@@ -126,7 +126,7 @@ export default function TermsOfUse() {
       <section className="pb-8 px-6 lg:px-10">
         <div className="relative max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 lg:p-8">
-            <p className="text-gray-600 text-sm leading-7">
+            <p className="text-gray-600 text-[14px] leading-7">
               MRI Xplore is committed to providing a secure, reliable, and
               professional environment for academic collaboration, research
               dissemination, publication services, and scholarly networking.
@@ -160,7 +160,7 @@ export default function TermsOfUse() {
                     {section.title}
                   </h2>
 
-                  <p className="text-gray-600 text-sm leading-7">
+                  <p className="text-gray-600 text-[14px] leading-7">
                     {section.content}
                   </p>
                 </div>
@@ -178,7 +178,7 @@ export default function TermsOfUse() {
               Governing Law
             </h2>
 
-            <p className="text-gray-600 text-sm leading-7">
+            <p className="text-gray-600 text-[14px] leading-7">
               These Terms of Use shall be governed and interpreted in accordance
               with the applicable laws of India. Any disputes arising from the
               use of MRI Xplore shall be subject to the jurisdiction of the
@@ -196,7 +196,7 @@ export default function TermsOfUse() {
               Changes to These Terms
             </h2>
 
-            <p className="text-gray-600 text-sm leading-7">
+            <p className="text-gray-600 text-[14px] leading-7">
               MRI Xplore reserves the right to modify or update these Terms of
               Use at any time. Updated versions will be published on this page,
               and continued use of the platform constitutes acceptance of the

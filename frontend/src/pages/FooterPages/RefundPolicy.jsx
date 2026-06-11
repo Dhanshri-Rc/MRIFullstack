@@ -17,7 +17,7 @@ export default function RefundPolicy() {
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl lg:text-4xl font-serif text-gray-900"
+            className="text-2xl lg:text-3xl font-serif text-gray-900"
           >
             Refund Policy
           </motion.h1>
@@ -29,11 +29,11 @@ export default function RefundPolicy() {
             className="w-14 h-[2px] bg-[#B8860B] mt-4 mb-5"
           />
 
-          <p className="text-[#B8860B] font-medium text-md mb-4">
+          <p className="text-[#B8860B] font-semibold text-[18px] mb-4">
             Transparent and Fair Payment Practices
           </p>
 
-          <p className="max-w-3xl text-gray-600 text-[13px] leading-7">
+          <p className="max-w-3xl text-gray-600 text-[14px] leading-7">
             This Refund Policy outlines the conditions under which MRI Xplore
             may provide refunds for memberships, event registrations,
             publication-related services, subscriptions, and other services.
@@ -56,7 +56,7 @@ export default function RefundPolicy() {
       </div>
 
       {/* Content */}
-      <section className="py-14">
+      <section className="py-8">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
           {/* Last Updated */}
           <div className="mb-10">
@@ -89,13 +89,13 @@ export default function RefundPolicy() {
           </div>
 
           {/* Sections */}
-          <div className="space-y-12">
+          <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
                 General Refund Policy
               </h2>
 
-              <p className="text-[15px] text-gray-600 leading-8">
+              <p className="text-[14px] text-gray-600 leading-8">
                 MRI Xplore aims to maintain transparent and fair payment
                 practices. Refund requests are reviewed based on the type of
                 service purchased, the timing of the request, and the status of
@@ -106,11 +106,11 @@ export default function RefundPolicy() {
             <hr className="border-gray-100" />
 
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
                 Membership Fees
               </h2>
 
-              <p className="text-[15px] text-gray-600 leading-8">
+              <p className="text-[14px] text-gray-600 leading-8">
                 Membership fees paid for professional, student, institutional,
                 or organizational memberships are generally non-refundable
                 unless specifically stated otherwise.
@@ -120,11 +120,11 @@ export default function RefundPolicy() {
             <hr className="border-gray-100" />
 
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
                 Conferences, Workshops and Events
               </h2>
 
-              <p className="text-[15px] text-gray-600 leading-8">
+              <p className="text-[14px] text-gray-600 leading-8">
                 Refund requests for conferences, seminars, workshops, training
                 programs, and related events may be considered only if submitted
                 before the published cancellation deadline.
@@ -134,7 +134,7 @@ export default function RefundPolicy() {
             <hr className="border-gray-100" />
 
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
                 Publication and Editorial Services
               </h2>
 
@@ -149,11 +149,11 @@ export default function RefundPolicy() {
             <hr className="border-gray-100" />
 
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
                 Digital Products and Subscriptions
               </h2>
 
-              <p className="text-[15px] text-gray-600 leading-8">
+              <p className="text-[14px] text-gray-600 leading-8">
                 Payments for digital resources, online subscriptions,
                 downloadable materials, reports, certificates, and electronic
                 services are generally non-refundable once access has been
@@ -163,11 +163,11 @@ export default function RefundPolicy() {
 
             {/* Non Refundable Box */}
             <div className="rounded-xl border border-red-100 bg-red-50 p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
                 Non-Refundable Services
               </h2>
 
-              <ul className="space-y-3 text-[15px] text-gray-600">
+              <ul className="space-y-3 text-[14px] text-gray-600">
                 <li>• Published articles and research outputs</li>
                 <li>• Editorial and peer-review services</li>
                 <li>• DOI registration and indexing services</li>
@@ -179,11 +179,11 @@ export default function RefundPolicy() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
                 Duplicate Payments and Technical Errors
               </h2>
 
-              <p className="text-[15px] text-gray-600 leading-8">
+              <p className="text-[14px] text-gray-600 leading-8">
                 Refunds may be issued in cases of verified duplicate payments,
                 payment gateway failures, or technical transaction errors after
                 successful verification by MRI Xplore.
@@ -193,11 +193,11 @@ export default function RefundPolicy() {
             <hr className="border-gray-100" />
 
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
                 Refund Processing Time
               </h2>
 
-              <p className="text-[15px] text-gray-600 leading-8">
+              <p className="text-[14px] text-gray-600 leading-8">
                 Approved refunds are processed through the original payment
                 method. Processing times may vary depending on payment
                 providers, banks, and financial institutions.
@@ -207,11 +207,11 @@ export default function RefundPolicy() {
             <hr className="border-gray-100" />
 
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
                 Changes to This Policy
               </h2>
 
-              <p className="text-[15px] text-gray-600 leading-8">
+              <p className="text-[14px] text-gray-600 leading-8">
                 MRI Xplore reserves the right to modify or update this Refund
                 Policy at any time. Updated versions will be posted on this
                 page.
@@ -219,18 +219,50 @@ export default function RefundPolicy() {
             </div>
           </div>
 
-          {/* Contact */}
-          <div className="mt-14 rounded-xl bg-gray-50 p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Contact Us
-            </h2>
+{/* Contact */}
+<div className="mt-8 rounded-xl bg-[#fdf8f0] p-8">
+  <h2 className="text-[20px] font-semibold text-gray-900 mb-4">
+    Contact Us
+  </h2>
 
-            <p className="text-[15px] text-gray-600 leading-8">
-              For refund-related questions, please contact the MRI Xplore
-              support team with your payment reference number and supporting
-              documentation for review.
-            </p>
-          </div>
+  <div className="space-y-3 text-[14px] text-gray-600">
+    <p>
+      <span className="font-medium text-gray-900">MRI Xplore</span>
+    </p>
+
+    <p>
+      <span className="font-medium text-gray-900">Email:</span>{" "}
+      <a
+        href="mailto:editor@mriindia.com"
+        className="text-[#B8860B] hover:underline"
+      >
+        editor@mriindia.com
+      </a>
+    </p>
+
+    <p>
+      <span className="font-medium text-gray-900">Website:</span>{" "}
+      <a
+        href="https://mriindia.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-[#B8860B] hover:underline"
+      >
+        mriindia.com
+      </a>
+    </p>
+
+    <p>
+      <span className="font-medium text-gray-900">Call Us:</span>{" "}
+      <a
+        href="tel:+919960266198"
+        className="text-[#B8860B] hover:underline"
+      >
+        +91 9960266198
+      </a>
+    </p>
+  </div>
+</div>
         </div>
       </section>
     </div>
