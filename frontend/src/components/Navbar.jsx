@@ -41,14 +41,14 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative py-2 text-[14px] font-semibold transition-all duration-300 hover:text-[#c27a12] ${
+                className={`relative py-1 text-[14px] font-semibold transition-all duration-300 hover:text-[#c27a12] ${
                   active ? "text-[#c27a12]" : "text-[#111]"
                 }`}
               >
                 {link.label}
 
                 <span
-                  className={`absolute left-0 -bottom-[1px] h-[2px] bg-[#c27a12] transition-all duration-300 ${
+                  className={`absolute left-0 bottom-[1px] h-[2px] bg-[#c27a12] transition-all duration-300  ${
                     active ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 />
