@@ -8,7 +8,6 @@ import {
   Users,
   BookOpen,
   Calendar,
-  Trophy,
   Search,
   GraduationCap,
   Globe,
@@ -19,50 +18,50 @@ import {
 } from "lucide-react";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+
 
 /* Counter Hook */
-const useCounter = (end, duration = 2000) => {
-  const [count, setCount] = useState(0);
+// const useCounter = (end, duration = 2000) => {
+//   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    let start = 0;
-    const increment = end / (duration / 16);
+//   useEffect(() => {
+//     let start = 0;
+//     const increment = end / (duration / 16);
 
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.ceil(start));
-      }
-    }, 16);
+//     const timer = setInterval(() => {
+//       start += increment;
+//       if (start >= end) {
+//         setCount(end);
+//         clearInterval(timer);
+//       } else {
+//         setCount(Math.ceil(start));
+//       }
+//     }, 16);
 
-    return () => clearInterval(timer);
-  }, [end, duration]);
+//     return () => clearInterval(timer);
+//   }, [end, duration]);
 
-  return count;
-};
+//   return count;
+// };
 
-const stats = [
-  { num: 500, label: "Members", icon: <Users size={28} strokeWidth={1.5} /> },
-  {
-    num: 50,
-    label: "Events Organized",
-    icon: <Calendar size={28} strokeWidth={1.5} />,
-  },
-  {
-    num: 100,
-    label: "Research Collaborations",
-    icon: <BookOpen size={28} strokeWidth={1.5} />,
-  },
-  {
-    num: 10,
-    label: "Years of Excellence",
-    icon: <Trophy size={28} strokeWidth={1.5} />,
-  },
-];
+// const stats = [
+//   { num: 500, label: "Members", icon: <Users size={28} strokeWidth={1.5} /> },
+//   {
+//     num: 50,
+//     label: "Events Organized",
+//     icon: <Calendar size={28} strokeWidth={1.5} />,
+//   },
+//   {
+//     num: 100,
+//     label: "Research Collaborations",
+//     icon: <BookOpen size={28} strokeWidth={1.5} />,
+//   },
+//   {
+//     num: 10,
+//     label: "Years of Excellence",
+//     icon: <Trophy size={28} strokeWidth={1.5} />,
+//   },
+// ];
 
 const objectives = [
   {
@@ -308,7 +307,7 @@ export default function About() {
 </section>
 
       {/* Stats */}
-     <section className="bg-gray-50 py-6 px-6 sm:px-6 md:px-10 lg:px-14">
+     {/* <section className="bg-gray-50 py-6 px-6 sm:px-6 md:px-10 lg:px-14">
   <div className="max-w-7xl mx-auto w-full">
 
     <div className="
@@ -354,7 +353,7 @@ export default function About() {
     </div>
 
   </div>
-</section>
+</section> */}
 
       {/* Objectives */}
      <section className="py-6 bg-white px-6 sm:px-6 lg:px-14 md:px-10">
