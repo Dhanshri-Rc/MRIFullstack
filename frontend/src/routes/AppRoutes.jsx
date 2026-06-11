@@ -19,6 +19,7 @@ import ContactAdmin from '../pages/admin/ContactAdmin';
 import PrivacyPolicy from '../pages/FooterPages/PrivacyPolicy';
 import TermsOfUse from '../pages/FooterPages/TermsOfUse';
 import RefundPolicy from '../pages/FooterPages/RefundPolicy';
+import CookiePolicy from '../pages/FooterPages/CookiePolicy';
 
 
 // Protected route wrapper
@@ -40,6 +41,7 @@ export default function AppRoutes() {
       <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
       <Route path="/terms-of-use" element={<MainLayout><TermsOfUse/></MainLayout>} />
       <Route path="/refund-policy" element={<MainLayout><RefundPolicy/></MainLayout>} />
+      <Route path="/cookie-policy" element={<MainLayout><CookiePolicy/></MainLayout>} />
       {/* Auth */}
       <Route path="/login" element={<AdminLogin />} />
 

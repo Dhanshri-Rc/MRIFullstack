@@ -1,7 +1,7 @@
 
 import Breadcrumb from "../../components/Breadcrumb";
 import { ShieldCheck, Mail } from "lucide-react";
-import bg from "../../assets/1bg.webp";
+
 
 export default function PrivacyPolicy() {
   return (
@@ -9,8 +9,8 @@ export default function PrivacyPolicy() {
 
       {/* HERO */}
       <section className="bg-[#fdfaf5] border-b border-[#ece3d2]">
-        <div className="max-w-7xl mx-auto px-10 sm:px-12 lg:px-16 py-12 bg-cover bg-center "
-          style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="max-w-7xl mx-auto px-10 sm:px-12 lg:px-20 py-12 bg-cover bg-center "
+         >
 
           <div className="max-w-4xl">
             <div className="flex items-center gap-2 text-[#B8860B] mb-2">
@@ -42,7 +42,7 @@ export default function PrivacyPolicy() {
 
       {/* BREADCRUMB */}
       <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-10 sm:px-12 lg:px-16 py-3">
+        <div className="max-w-7xl mx-auto px-10 sm:px-12 lg:px-20 py-3">
           <Breadcrumb
             items={[
               {
@@ -55,7 +55,7 @@ export default function PrivacyPolicy() {
       </div>
 
       {/* CONTENT */}
-      <section className=" py-8 px-8 sm:px-12 lg:px-16">
+      <section className=" py-8 px-8 sm:px-12 lg:px-20">
         <div className="max-w-7xl mx-auto">
 
           <div
@@ -75,9 +75,7 @@ export default function PrivacyPolicy() {
                 MRI Xplore Privacy Statement
               </h2>
 
-              <p className="text-gray-500 text-sm mt-2">
-                Effective Date: January 2026
-              </p>
+           
             </div>
 
             {/* BODY */}
@@ -96,7 +94,7 @@ export default function PrivacyPolicy() {
                   journals, services, and digital resources.
                 </p>
               </div>
-
+                      <hr />
               <div>
                 <h3 className="text-lg font-semibold text-[#B8860B] mb-3">
                   2. Information We Collect
@@ -109,7 +107,7 @@ export default function PrivacyPolicy() {
                   platform usage data necessary for providing services.
                 </p>
               </div>
-
+    <hr />
               <div>
                 <h3 className="text-lg font-semibold text-[#B8860B] mb-3">
                   3. Use of Information
@@ -160,7 +158,7 @@ export default function PrivacyPolicy() {
                   misuse, alteration, disclosure, or destruction.
                 </p>
               </div>
-
+    <hr />
               <div>
                 <h3 className="text-lg font-semibold text-[#B8860B] mb-3">
                   7. User Rights
@@ -172,7 +170,7 @@ export default function PrivacyPolicy() {
                   legal requirements and publishing obligations.
                 </p>
               </div>
-
+    <hr />
               <div>
                 <h3 className="text-lg font-semibold text-[#B8860B] mb-3">
                   8. Changes to This Policy
