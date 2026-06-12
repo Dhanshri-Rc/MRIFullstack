@@ -14,7 +14,9 @@ exports.getAll = async (req, res) => {
   limit = 10,
   sortBy = 'createdAt',
 } = req.query;
-    const offset = (page - 1) * limit;
+    const safePage = Number(page) || 1;
+const safeLimit = Number(limit) || 10;
+const offset = (safePage - 1) * safeLimit;
 
     let where = 'WHERE status = "active"';
     const params = [];
@@ -49,14 +51,14 @@ if (establishedYear && establishedYear !== 'All Years') {
     const orderMap = { title: 'title ASC', newest: 'createdAt DESC', oldest: 'createdAt ASC' };
     const orderClause = orderMap[sortBy] || 'createdAt DESC';
 
-    const [rows] = await pool.query(
-      `SELECT *, (SELECT COUNT(*) FROM articles WHERE journalId = journals.id) as articleCount
-       FROM journals ${where} ORDER BY ${orderClause} LIMIT ? OFFSET ?`,
-      [...params, parseInt(limit), parseInt(offset)]
-    );
+   const [rows] = await pool.query(
+  `SELECT *, (SELECT COUNT(*) FROM articles WHERE journalId = journals.id) as articleCount
+   FROM journals ${where} ORDER BY ${orderClause} LIMIT ${safeLimit} OFFSET ${offset}`,
+  params
+);
     const [[{ total }]] = await pool.query(`SELECT COUNT(*) as total FROM journals ${where}`, params);
 
-    res.json({ success: true, data: rows, total, page: parseInt(page), limit: parseInt(limit) });
+    res.json({ success: true, data: rows, total, page: safePage, limit: safeLimit });
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, message: 'Server error' });
