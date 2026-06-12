@@ -330,13 +330,17 @@ export default function AddEditArticle() {
       className="absolute left-3 top-4 text-gray-400"
     />
 
-    <textarea
-      value={form.keywords}
-      onChange={set("keywords")}
-      placeholder="keyword1, keyword2, keyword3"
-      rows={2}
-      className={`${inputCls} pl-10 min-h-[60px] resize-y pt-3`}
-    />
+  <textarea
+  value={form.keywords}
+  onChange={(e) => {
+    set("keywords")(e);
+    e.target.style.height = "auto";
+    e.target.style.height = `${e.target.scrollHeight}px`;
+  }}
+  placeholder="keyword1, keyword2, keyword3"
+  rows={2}
+  className={`${inputCls} pl-10 pt-3 overflow-hidden resize-none`}
+/>
   </div>
 
   <p className="text-[11px] text-gray-400 mt-1">
@@ -349,7 +353,7 @@ export default function AddEditArticle() {
   <input
     value={form.articleUrl}
     onChange={set("articleUrl")}
-    placeholder="https://doi.org / external link"
+    placeholder="https://example.com/article"
     className={inputCls}
   />
 
@@ -358,18 +362,23 @@ export default function AddEditArticle() {
   </p>
 </div>
                   <div>
-                    <label className={labelCls}>How to Cite</label>
+                    
+                      <label className={labelCls}>
+                      How to Cite <span className="text-red-500">*</span>
+                    </label>
                     <div className="relative">
                       <Quote
                         size={16}
                         className="absolute left-3 top-3 text-gray-400"
                       />
                       <textarea
+                      
                         value={form.citation}
                         onChange={set("citation")}
                         rows={5}
                         placeholder="Author, A. (2026). Article title. Journal Name, Volume(Issue), Pages."
                         className={textareaCls + " pl-10"}
+                        
                       />
                     </div>
                         
