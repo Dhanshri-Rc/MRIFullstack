@@ -63,6 +63,12 @@ app.get('/api/admin/dashboard/stats', auth, require('./controllers/dashboardCont
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date() }));
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "MRI Xplore Backend API is running"
+  });
+});
+
 // 404
 app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
 
