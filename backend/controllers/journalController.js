@@ -18,7 +18,7 @@ exports.getAll = async (req, res) => {
 const safeLimit = Number(limit) || 10;
 const offset = (safePage - 1) * safeLimit;
 
-    let where = 'WHERE status = "active"';
+    let where = "WHERE status = 'active'";
     const params = [];
 
     if (search) {
