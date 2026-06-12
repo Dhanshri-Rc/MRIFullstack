@@ -55,6 +55,9 @@ function Input({ field, value, onChange, ...props }) {
 
 export default function AddEditJournal() {
   const { id } = useParams();
+
+  const API_ORIGIN = import.meta.env.VITE_API_BASE_URL.replace("/api", "");
+
   const navigate = useNavigate();
   const isEdit = !!id && id !== "add";
 
@@ -105,8 +108,8 @@ export default function AddEditJournal() {
           });
 
           if (j.coverImage) {
-            setCoverPreview(`http://localhost:5000${j.coverImage}`);
-          }
+  setCoverPreview(`${API_ORIGIN}${j.coverImage}`);
+}
         })
         .catch(() => setError("Failed to load journal"))
         .finally(() => setFetchLoading(false));

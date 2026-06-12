@@ -533,9 +533,11 @@ function Select({ value, onChange, children }) {
 }
 
 function JournalListCard({ journal, i }) {
-  const coverSrc = journal.coverImage
-    ? `http://localhost:5000${journal.coverImage}`
-    : null;
+  const API_ORIGIN = import.meta.env.VITE_API_BASE_URL.replace("/api", "");
+
+const coverSrc = journal.coverImage
+  ? `${API_ORIGIN}${journal.coverImage}`
+  : null;
 
   const indexingTags = journal.tags
     ? journal.tags
@@ -643,9 +645,11 @@ function JournalListCard({ journal, i }) {
 }
 
 function JournalGridCard({ journal, i }) {
-  const coverSrc = journal.coverImage
-    ? `http://localhost:5000${journal.coverImage}`
-    : null;
+const API_ORIGIN = import.meta.env.VITE_API_BASE_URL.replace("/api", "");
+
+const coverSrc = journal.coverImage
+  ? `${API_ORIGIN}${journal.coverImage}`
+  : null;
 
   return (
     <motion.article
