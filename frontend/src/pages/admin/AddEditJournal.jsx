@@ -9,6 +9,7 @@ import { createJournal, updateJournal, getJournal } from "../../api/api";
 const SUBJECT_AREAS = [
   "Medical & Health Sciences",
   "Engineering & Technology",
+  "Business & Management",
   "Computer Science",
   "Life Sciences",
   "Physical Sciences",
@@ -282,6 +283,7 @@ export default function AddEditJournal() {
                     >
                       <option value="Bi-Monthly">Bi-Monthly</option>
                       <option value="Quarterly">Quarterly</option>
+                      <option value="Bi-Annualy">Bi-Annualy</option>
                       <option value="Monthly">Monthly</option>
                       <option value="Yearly">Yearly</option>
                     </select>
