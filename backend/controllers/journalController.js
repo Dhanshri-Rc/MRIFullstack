@@ -61,7 +61,10 @@ if (establishedYear && establishedYear !== 'All Years') {
     res.json({ success: true, data: rows, total, page: safePage, limit: safeLimit });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ success: false, message: 'Server error' });
+    res.status(500).json({ 
+  success: false, 
+  message: err.message 
+});
   }
 };
 
@@ -71,7 +74,10 @@ exports.getOne = async (req, res) => {
     if (!rows.length) return res.status(404).json({ success: false, message: 'Journal not found' });
     res.json({ success: true, data: rows[0] });
   } catch (err) {
-    res.status(500).json({ success: false, message: 'Server error' });
+    res.status(500).json({ 
+  success: false, 
+  message: err.message 
+});
   }
 };
 
@@ -211,6 +217,9 @@ exports.remove = async (req, res) => {
     await pool.query('DELETE FROM journals WHERE id = ?', [req.params.id]);
     res.json({ success: true, message: 'Journal deleted' });
   } catch (err) {
-    res.status(500).json({ success: false, message: 'Server error' });
+    res.status(500).json({ 
+  success: false, 
+  message: err.message 
+});
   }
 };
