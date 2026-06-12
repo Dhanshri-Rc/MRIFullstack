@@ -321,24 +321,28 @@ export default function AddEditArticle() {
                     </div>
                   </div>
 
-                  <div>
-                    <label className={labelCls}>Keywords</label>
-                    <div className="relative">
-                      <Tag
-                        size={16}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-                      />
-                      <input
-                        value={form.keywords}
-                        onChange={set("keywords")}
-                        placeholder="keyword1, keyword2, keyword3"
-                        className={inputCls + " pl-10"}
-                      />
-                    </div>
-                    <p className="text-[11px] text-gray-400 mt-1">
-                      Separate multiple keywords using commas.
-                    </p>
-                  </div>
+                 <div>
+  <label className={labelCls}>Keywords</label>
+
+  <div className="relative">
+    <Tag
+      size={16}
+      className="absolute left-3 top-4 text-gray-400"
+    />
+
+    <textarea
+      value={form.keywords}
+      onChange={set("keywords")}
+      placeholder="keyword1, keyword2, keyword3"
+      rows={2}
+      className={`${inputCls} pl-10 min-h-[60px] resize-y pt-3`}
+    />
+  </div>
+
+  <p className="text-[11px] text-gray-400 mt-1">
+    Separate multiple keywords using commas.
+  </p>
+</div>
 <div>
   <label className={labelCls}>Article URL</label>
 
