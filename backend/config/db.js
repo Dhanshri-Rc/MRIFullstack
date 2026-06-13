@@ -1,5 +1,5 @@
-const mysql = require('mysql2/promise');
-require('dotenv').config();
+const mysql = require("mysql2/promise");
+require("dotenv").config();
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -8,21 +8,14 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   ssl: { rejectUnauthorized: false },
+  connectTimeout: 30000,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
 });
 
 async function initDB() {
- const conn = await mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  ssl: { rejectUnauthorized: false },
-});
-  await conn.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME}\``);
-  await conn.end();
+  console.log(`✅ Connected to database: ${process.env.DB_NAME}`);
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS journals (
@@ -95,8 +88,8 @@ async function initDB() {
     )
   `);
 
-  // Insert default contact info if not exists
-  const [rows] = await pool.query('SELECT id FROM contact_info LIMIT 1');
+  const [rows] = await pool.query("SELECT id FROM contact_info LIMIT 1");
+
   if (rows.length === 0) {
     await pool.query(`
       INSERT INTO contact_info (email, phone, address, workingHours) VALUES (
@@ -108,7 +101,17 @@ async function initDB() {
     `);
   }
 
-  console.log('✅ Database initialized successfully');
+  const [journalCount] = await pool.query(
+    "SELECT COUNT(*) AS total FROM journals"
+  );
+
+  const [articleCount] = await pool.query(
+    "SELECT COUNT(*) AS total FROM articles"
+  );
+
+  console.log("📚 Journals:", journalCount[0].total);
+  console.log("📄 Articles:", articleCount[0].total);
+  console.log("✅ Database initialized successfully");
 }
 
 module.exports = { pool, initDB };
